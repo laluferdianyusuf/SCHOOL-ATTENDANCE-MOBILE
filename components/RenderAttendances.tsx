@@ -47,12 +47,22 @@ export default function RenderAttendances({
         }`}
       >
         <View>
-          <Text
-            className="text-base capitalize font-bold"
-            style={{ color: colors.text, fontFamily: "Kanit" }}
-          >
-            {item?.student?.name || "Unknown Student"}
-          </Text>
+          <View className="flex-row items-center gap-2">
+            <Text
+              className="text-base capitalize font-bold"
+              style={{ color: colors.text, fontFamily: "Kanit" }}
+            >
+              {item?.student?.name || "Unknown Student"}
+            </Text>
+            <View className="border border-custom-green-1 px-1 rounded-md items-center justify-center">
+              <Text
+                className="text-xs opacity-70"
+                style={{ color: colors.text, fontFamily: "Kanit" }}
+              >
+                {item?.present || ""}
+              </Text>
+            </View>
+          </View>
           <Text
             className="opacity-50"
             style={{ color: colors.text, fontFamily: "Kanit" }}

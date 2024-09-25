@@ -82,7 +82,15 @@ export const AttendanceScreen = () => {
   return (
     <View className="flex-1 pt-16 px-6">
       <View className="flex-row justify-between">
-        <BackButton />
+        <View className="flex-row items-center justify-center gap-3">
+          <BackButton />
+          <Text
+            className="capitalize"
+            style={{ fontFamily: "Kanit", color: colors.text }}
+          >
+            attendances
+          </Text>
+        </View>
         <Pressable
           className={`${
             dark ? "bg-custom-green-dark" : "bg-custom-green-light"
@@ -99,7 +107,7 @@ export const AttendanceScreen = () => {
           </Text>
         </Pressable>
       </View>
-      <View className="flex-row items-center gap-4 justify-center mb-5">
+      <View className="flex-row items-center gap-4 justify-center mb-3">
         <View className="h-[1px] bg-custom-green-opacity-1 flex-1" />
         <Text
           className="text-custom-green-opacity-1"
