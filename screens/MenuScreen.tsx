@@ -68,6 +68,7 @@ export const MenuScreen = () => {
       const response = await dispatch(
         getStudentById({ id: String(user?.studentId) })
       ).unwrap();
+
       setStudent(response);
     } catch (error: any) {
       setRenderLoading(false);
@@ -159,6 +160,10 @@ export const MenuScreen = () => {
   const backgroundColor = dark ? "#041f1b" : "#c5e0dd";
   const tintColor = dark ? "#0D9485" : "#0D9485";
   const gender = "female";
+
+  const arrayAttendance = Array.isArray(student?.attendances)
+    ? student.attendances.map((item) => item.present)
+    : [];
 
   return (
     <View className="flex-1 pt-16 px-6">
@@ -296,7 +301,7 @@ export const MenuScreen = () => {
                       className="capitalize"
                       style={{ fontFamily: "Kanit", color: colors.text }}
                     >
-                      present
+                      {arrayAttendance}
                     </Text>
                   </View>
                 </View>

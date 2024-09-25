@@ -83,8 +83,8 @@ export interface SchoolResponse {
 }
 
 // student
-export interface Student {
-  id?: string;
+export interface Student extends Attendance {
+  id?: string | number;
   name: string;
   classroom: string;
   parentName?: string;
@@ -92,6 +92,7 @@ export interface Student {
   relationship?: string;
   parentPhone?: string;
   schoolId?: number | string;
+  attendances?: Attendance;
 }
 
 export interface StudentState {
@@ -185,7 +186,7 @@ export interface NotificationResponse {
 
 // attendances
 export interface Attendance {
-  id?: number;
+  id?: string | number;
   present?: string;
   timestamp?: string;
   studentId?: string | number;
