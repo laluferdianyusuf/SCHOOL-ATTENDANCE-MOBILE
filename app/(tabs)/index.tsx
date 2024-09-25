@@ -18,7 +18,7 @@ import CategoryItem from "@/components/CategoryItem";
 import Badge from "@/components/Badge";
 import { getNotificationBySchoolId } from "@/redux/slicer/notificationSlice";
 import LoadingModal from "@/components/LoadingModal";
-import { Category } from "@/types/types";
+import { Category, News } from "@/types/types";
 import { uri } from "@/utils/uri";
 
 const category: Category[] = [
@@ -64,7 +64,7 @@ export default function HomeScreen() {
   const dispatch: AppDispatch = useDispatch();
   const { colors } = useTheme();
   const { admin } = useSelector((state: RootState) => state.auth);
-  const { news } = useSelector((state: RootState) => state.news);
+  const [news, setNews] = useState<News[]>([]);
   const { notifications, loading: notificationsLoading } = useSelector(
     (state: RootState) => state.notification
   );
@@ -76,9 +76,10 @@ export default function HomeScreen() {
       try {
         await dispatch(currentUser()).unwrap();
         if (admin?.schoolId) {
-          await dispatch(
+          const response = await dispatch(
             listNewsBySchool({ id: Number(admin.schoolId) })
           ).unwrap();
+          setNews(response.data);
         }
         await dispatch(
           getNotificationBySchoolId({

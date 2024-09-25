@@ -15,7 +15,6 @@ export * from "./ProfileScreen";
 export * from "./NotificationDetailScreen";
 export * from "./DetailScreen";
 export * from "./CourseScreen";
-export * from "./ManageAccountScreen";
 export * from "./ActivityScreen";
 export * from "./ChangePasswordScreen";
 export * from "./EditScreen";
